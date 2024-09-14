@@ -1,5 +1,5 @@
 # Sonarqube
-### certificate
+### -
 
 #### run sonar on springboot maven project
 ```bash
