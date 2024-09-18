@@ -15,3 +15,8 @@ mvn dependency:tree | grep slf4j
 ```bash
 mvn install:install-file -Dfile=./any-jar.jar -DgroupId=org.abc.xyz -DartifactId=zyx -Dversion=1.0.0 -Dpackaging=jar
 ```
+
+#### build and skip tests but compile test cases
+```bash
+mvn clean install -DskipTests
+```
