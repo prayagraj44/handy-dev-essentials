@@ -8,5 +8,25 @@ you need to add it back manually to your project.
         <groupId>jakarta.xml.bind</groupId>	
         <artifactId>jakarta.xml.bind-api</artifactId>	
         <version>4.0.0</version>	
-</dependency>	
+</dependency>
+
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>4.0.3</version>
+</dependency>
+
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>4.0.3</version>
+</dependency>
+
+<dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-core</artifactId>
+        <version>4.0.3</version>
+</dependency>
+
+
 ```
