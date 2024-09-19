@@ -1,7 +1,7 @@
 ### Fixing "JAXB-API has not been found on module class path" in Spring Boot 3.x	
 
 This error happens because, starting from Java 11, the JAXB API (which was previously part of the JDK) has been removed. In Spring Boot 3.x, 	
-you need to add it back manually to your project.	
+you need to add it back manually to your project's pom.xml 	
 
 ```xml	
 <dependency>	
