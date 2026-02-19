@@ -1,0 +1,34 @@
+// ===== CONFIG =====
+const key = pm.environment.get("netstorage_key");
+const keyName = pm.environment.get("netstorage_keyname");
+const action = pm.environment.get("netstorage_action");
+
+// ===== BUILD AUTH DATA =====
+const epoch = Math.floor(Date.now() / 1000);
+const uniqueId = Math.floor(Math.random() * 100000);
+
+const authData = `5, 0.0.0.0, 0.0.0.0, ${epoch}, ${uniqueId}, ${keyName}`;
+
+// ===== BUILD SIGN STRING =====
+// IMPORTANT: only path, NOT full URL
+const url = new URL(pm.request.url.toString());
+const requestPath = url.pathname;
+
+const signString =
+    requestPath + "\n" +
+    "x-akamai-acs-action:" + action + "\n";
+
+// ===== CREATE SIGNATURE =====
+const message = authData + signString;
+const signature = CryptoJS.HmacSHA256(message, key).toString(CryptoJS.enc.Base64);
+
+// ===== SET HEADERS =====
+pm.request.headers.upsert({
+    key: "X-Akamai-ACS-Auth-Data",
+    value: authData
+});
+
+pm.request.headers.upsert({
+    key: "X-Akamai-ACS-Auth-Sign",
+    value: signature
+});
